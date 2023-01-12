@@ -1,0 +1,95 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input type="text" class="form-control" placeholder="Buscar por estación..." />
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="!cargando">
+
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Precio Calculo SENEAM :<span
+                                class="label label-info">{{totalPrecios}}</span></h4>
+                        <h6 class="card-subtitle">Precios registrados en la aplicación</h6>
+                    </div>
+
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered  table-hover">
+                        <thead>
+                            <tr>
+                                <th>Distancia</th>
+                                <th>Clave SENEA</th>
+                                <th>Kilometros</th>
+                                <th>Tarifa</th>
+                                <th>Importe USD</th>
+
+                                <th>Usuario</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let price of preciosCalculo">
+
+
+
+                                <td>{{price.distancia}}</td>
+
+
+
+                                <td>{{price.claveSenea}}</td>
+
+
+
+                                <td>{{price.kilometros}}</td>
+
+
+
+                                <td>{{price.tarifa}}</td>
+
+
+
+                                <td>{{price.importe}}</td>
+
+                                <td>{{price.usuario}}</td>
+
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <button (click)="cambiarPagina(-5)" class="btn btn-secondary">Anterior</button>
+                    &nbsp;
+                    <button (click)="cambiarPagina(5)" class="btn btn-secondary">Siguiente</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

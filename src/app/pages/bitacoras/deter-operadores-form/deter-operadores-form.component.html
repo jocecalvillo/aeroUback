@@ -1,0 +1,71 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">{{titulo}}</div>
+
+    <div class="card-body">
+
+        <form (ngSubmit)="create()">
+            <div class="form-group row">
+                <label for="match" class="col-form-label col-sm-2">Match</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="operadores.match" name="Match">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="vuelo" class="col-form-label col-sm-2">Vuelo</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="operadores.vuelo" name="Vuelo">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="origenDestino" class="col-form-label col-sm-2">Origen Destino</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="operadores.origenDestino"
+                        name="Origen Destino">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="origen" class="col-form-label col-sm-2">Origen</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="operadores.origen" name="Origen">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="destino" class="col-form-label col-sm-2">Destino</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="operadores.destino" name="Destino">
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="clase" class="col-form-label col-sm-2">Clase</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="operadores.clase" name="Clase">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="cliente" class="col-form-label col-sm-2">Cliente</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="operadores.cliente" name="Cliente">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="my-2">
+                    <button class="btn btn-primary" role="button">Crear</button>
+                    &nbsp;
+                    <button class="btn btn-danger" role="button" (click)="regreso()">Cancelar</button>
+                </div>
+            </div>
+
+
+        </form>
+
+
+    </div>
+</div>

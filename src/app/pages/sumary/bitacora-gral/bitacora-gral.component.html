@@ -1,0 +1,241 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <!--  <input type="text" class="form-control" placeholder="Buscar por bitacora.."
+                    (keyup)="buscar(txtTermino.value)" #txtTermino />
+               -->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="!cargando">
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Bitacoras : <span class="label label-info">{{totalVuelos}}</span>
+                        </h4>
+                        <h6 class="card-subtitle">Bitacoras registrados en la aplicación</h6>
+
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered  table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Clave</th>
+                                    <th>Matrícula</th>
+                                    <th>#OP/Tramo</th>
+                                    <th>Op O_D</th>
+                                    <th>Origen-Destino</th>
+                                    <th>N/I</th>
+
+                                    <th>Horario Aterrizaje</th>
+                                    <th>Horario Manifiesto LLegada</th>
+                                    <th>Horario Manifiesto Salida</th>
+                                    <th>Bitacora</th>
+                                    <th>Numero de Vuelo</th>
+                                    <th>Clasificacion</th>
+                                    <th>Operador vuelo</th>
+                                    <th>Dia</th>
+                                    <th>Manifiesto llegada</th>
+                                    <th>Manifiesto Salida</th>
+
+                                    <th>Tiempo en Plataforma Horas</th>
+                                    <th>Minutos PLATAFORMA MEX</th>
+                                    <th>Hora Salida (Zulu)</th>
+
+                                    <th>Hora Salida (Real)</th>
+                                    <th>Capitán del vuelo</th>
+
+                                    <th>Oficial 1</th>
+                                    <th>Oficial 2</th>
+                                    <th>Oficial 3</th>
+                                    <th>Oficial 4</th>
+                                    <th>Oficial 5</th>
+
+                                    <th>Pierna</th>
+                                    <th>Fecha</th>
+                                    <th>Origen</th>
+                                    <th>Destino</th>
+                                    <th>Hora de salida</th>
+
+                                    <th>Hora despegue</th>
+                                    <th>Hora aterrizaje</th>
+                                    <th>Estacionamiento</th>
+                                    <th>Horas bloque</th>
+                                    <th>Horas vuelo</th>
+
+                                    <th>Ciclos de vuelo</th>
+                                    <th>Hora local México</th>
+                                    <th>Combustible suministrado TN</th>
+                                    <th>Combustible suministrado LIBS</th>
+                                    <th>Combustible suministrado GAL</th>
+
+                                    <th>Combustible suministrado Lts</th>
+                                    <th>Combustible suministrado Kgs</th>
+                                    <th>Combustible de salida TN</th>
+                                    <th>Combustible de salida Libs</th>
+                                    <th>Combustible de salida Kgs</th>
+
+
+                                    <th>Combustible llegada TN</th>
+                                    <th>Combustible llegada LIBS</th>
+                                    <th>Combustible llegada Kgs</th>
+                                    <th>Carga TN</th>
+                                    <th>Carga LIBS</th>
+
+                                    <th>Carga Kgs</th>
+                                    <th>APU Horas</th>
+                                    <th>APU Ciclos</th>
+                                    <th>Suministro GAL</th>
+                                    <th>Suministro LIBS</th>
+
+                                    <th>Suministro LTS</th>
+                                    <th>Cargo MVT (Kgs)</th>
+                                    <th>Conversión Suministro a TN</th>
+                                    <th>Conversión Suministro a GAL</th>
+                                    <th>Conversión Suministro a LTS</th>
+
+                                    <th>Conversión Suministro a LIBS</th>
+                                    <th>Consumo LIBS</th>
+                                    <th>TAMPA Departures</th>
+                                    <th>TAMPA tramos</th>
+                                    <th>Operaciones</th>
+
+                                    <th class="text-nowrap">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let vuelo of bitGral">
+                                    <td>{{vuelo.clave}}</td>
+                                    <td>{{vuelo.matricula}}</td>
+                                    <td>{{vuelo.opTramo}}</td>
+                                    <td>{{vuelo.opOD }}</td>
+
+                                    <td>{{vuelo.origenDestino}}</td>
+                                    <td>{{vuelo.nacInt}}</td>
+                                    <td>{{vuelo.horarioAterrizaje}}</td>
+                                    <td>{{vuelo.horarioManifestoLLegada }}</td>
+
+                                    <td>{{vuelo.horarioManifestoSalida}}</td>
+                                    <td>{{vuelo.bitacora}}</td>
+                                    <td>{{vuelo.numVuelo}}</td>
+                                    <td>{{vuelo.clasificacion }}</td>
+
+                                    <td>{{vuelo.operadorVuelo}}</td>
+                                    <td>{{vuelo.dia}}</td>
+                                    <td>{{vuelo.manifestoLLegada}}</td>
+                                    <td>{{vuelo.manifestoSalida }}</td>
+
+                                    <td>{{vuelo.tiempoPlataformaHr}}</td>
+                                    <td>{{vuelo.minPlataformaMex}}</td>
+                                    <td>{{vuelo.hrSalidaZulu}}</td>
+                                    <td>{{vuelo.hrSalidaReal }}</td>
+
+                                    <td>{{vuelo.capitanVuelo}}</td>
+                                    <td>{{vuelo.oficialPrimero}}</td>
+                                    <td>{{vuelo.oficialSegundo}}</td>
+                                    <td>{{vuelo.oficialTercero }}</td>
+
+                                    <td>{{vuelo.oficialCuarto}}</td>
+                                    <td>{{vuelo.oficialQuinto}}</td>
+                                    <td>{{vuelo.pierna}}</td>
+                                    <td>{{vuelo.origen }}</td>
+
+                                    <td>{{vuelo.destino}}</td>
+                                    <td>{{vuelo.horaSalida}}</td>
+                                    <td>{{vuelo.horaDespegue}}</td>
+                                    <td>{{vuelo.horaAterrizaje }}</td>
+
+                                    <td>{{vuelo.estacionamiento}}</td>
+                                    <td>{{vuelo.hrBloque}}</td>
+                                    <td>{{vuelo.hrVuelo}}</td>
+                                    <td>{{vuelo.ciclosVuelo }}</td>
+
+                                    <td>{{vuelo.hrMexico}}</td>
+                                    <td>{{vuelo.combustibleSuministroTN}}</td>
+                                    <td>{{vuelo.combustibleSuministroLibs}}</td>
+                                    <td>{{vuelo.combustibleSuministroGal}}</td>
+
+                                    <td>{{vuelo.combustibleSuministroLts}}</td>
+                                    <td>{{vuelo.combustibleSuministroKgs}}</td>
+                                    <td>{{vuelo.combustibleSalidaTN}}</td>
+                                    <td>{{vuelo.combustibleSalidaLibs }}</td>
+
+
+
+                                    <td>{{vuelo.combustibleSalidaKg}}</td>
+                                    <td>{{vuelo.combustibleLLegadaTN}}</td>
+                                    <td>{{vuelo.combustibleLLegadaLibs}}</td>
+                                    <td>{{vuelo.combustibleLLegadaKg }}</td>
+
+
+                                    <td>{{vuelo.cargaTN}}</td>
+                                    <td>{{vuelo.cargaLibs}}</td>
+                                    <td>{{vuelo.cargaKg}}</td>
+                                    <td>{{vuelo.apuHr }}</td>
+
+                                    <td>{{vuelo.apuCiclos}}</td>
+                                    <td>{{vuelo.suministroGal}}</td>
+                                    <td>{{vuelo.suministroLibs}}</td>
+                                    <td>{{vuelo.suministroLts }}</td>
+
+                                    <td>{{vuelo.cargoMvtKg}}</td>
+                                    <td>{{vuelo.convSuministroTn}}</td>
+                                    <td>{{vuelo.convSuministroGal}}</td>
+                                    <td>{{vuelo.convSuministroLts }}</td>
+
+
+
+                                    <td>{{vuelo.convSuministroLibs}}</td>
+                                    <td>{{vuelo.consumoLibs}}</td>
+                                    <td>{{vuelo.tampaDepartues}}</td>
+                                    <td>{{vuelo.tampaTramos }}</td>
+                                    <td>{{vuelo.operaciones }}</td>
+
+                                    <!-- <td><span class="label label-success">{{vuelo.from}}</span> </td>
+                                <td><span class="label label-danger">{{vuelo.to}}</span> </td>
+
+                                <td>{{vuelo.fuelGal | number:'1.0-4'}}</td>
+                                <td>{{vuelo.fuelLt | number:'1.0-4'}}</td> -->
+
+
+                                    <td class="text-nowrap">
+                                        <a href="#" data-toggle="tooltip" data-original-title="Editar"> <i
+                                                class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                        <a href="#" data-toggle="tooltip" data-original-title="Borrar"> <i
+                                                class="fa fa-close text-danger"></i> </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!--<div *ngIf="txtTermino.value.length===0">
+                    <button (click)="cambiarPagina(-10)" class="btn btn-secondary">Anterior</button>
+                    &nbsp;
+                    <button (click)="cambiarPagina(10)" class="btn btn-secondary">Siguiente</button>
+                </div> -->
+
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,169 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input type="text" class="form-control" placeholder="Buscar por bitacora.."
+                    (keyup)="buscar(txtTermino.value)" #txtTermino />
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="!cargando">
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Bitacora estimado vuelo XA-EFR : <span
+                                class="label label-info">{{totalVuelos}}</span>
+                        </h4>
+                        <h6 class="card-subtitle">Vuelos XA-EFR registrados en la aplicación</h6>
+                    </div>
+
+                    <div class="col">
+                        <div class=" my-2 text-right">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fa fa-file-alt"></i>
+                                Crear Nuevo
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered  table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Log Book</th>
+                                    <th>Log Book-Vlo</th>
+                                    <th>Operación</th>
+                                    <th>Leg</th>
+
+                                    <th>Fecha</th>
+                                    <th>FLT </th>
+                                    <th>Origen </th>
+                                    <th>Destino</th>
+
+                                    <th>Blk Out</th>
+                                    <th>Off</th>
+                                    <th>On</th>
+                                    <th>Blk In</th>
+
+                                    <th>Block Hour</th>
+                                    <th>Flight Hours</th>
+                                    <th>Flight Cycles</th>
+                                    <th>Blk Out Mex</th>
+
+                                    <th>Uplift</th>
+                                    <th>Depart(T)</th>
+                                    <th>Arrive (T)</th>
+                                    <th>Cargo</th>
+
+                                    <th>Cargo (T)</th>
+                                    <th>Cargo MVT(T)</th>
+                                    <th>Fuel Voucher (Lt)</th>
+                                    <th>Fuel Voucher x1000</th>
+
+                                    <th>Fuel Voucher (Gal)</th>
+                                    <th>Fuel Voucher x1000</th>
+                                    <th>Fuel Voucher (Tn)</th>
+                                    <th>Fuel Voucher (Gal)</th>
+
+                                    <th>Fuel Voucher (Lt)</th>
+                                    <th>Error(Bitacora Vs Voucher)</th>
+                                    <th>Consumo kgx1000</th>
+                                    <th>Observaciones</th>
+
+                                    <th>Fecha local</th>
+                                    <th>Inicio</th>
+                                    <th>Final</th>
+                                    <th>Concepto</th>
+
+                                    <th class="text-nowrap">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let vuelo of xaefr">
+                                    <td>{{vuelo.logBook}}</td>
+                                    <td>{{vuelo.logBookVlo}}</td>
+                                    <td>{{vuelo.operacion}}</td>
+                                    <td>{{vuelo.leg }}</td>
+
+                                    <td>{{vuelo.fecha}}</td>
+                                    <td>{{vuelo.flt}}</td>
+                                    <td>{{vuelo.from}}</td>
+                                    <td>{{vuelo.to }}</td>
+
+                                    <td>{{vuelo.blkOut}}</td>
+                                    <td>{{vuelo.off}}</td>
+                                    <td>{{vuelo.on}}</td>
+                                    <td>{{vuelo.blkIn }}</td>
+
+                                    <td>{{vuelo.blockHours}}</td>
+                                    <td>{{vuelo.flightHours}}</td>
+                                    <td>{{vuelo.flightCycles}}</td>
+                                    <td>{{vuelo.blkOutMex }}</td>
+
+                                    <td>{{vuelo.uplift}}</td>
+                                    <td>{{vuelo.depart}}</td>
+                                    <td>{{vuelo.arrive}}</td>
+                                    <td>{{vuelo.cargo }}</td>
+
+                                    <td>{{vuelo.cargoT}}</td>
+                                    <td>{{vuelo.cargoMvtT}}</td>
+                                    <td>{{vuelo.fuelVoucherLt}}</td>
+                                    <td>{{vuelo.fuelVoucherBitacorax1000 }}</td>
+
+                                    <td>{{vuelo.fuelVoucherGal}}</td>
+                                    <td>{{vuelo.fuelVoucherBitacora2x1000}}</td>
+                                    <td>{{vuelo.fuelVoucherTnTotal}}</td>
+                                    <td>{{vuelo.fuelVoucherGalTotal }}</td>
+
+                                    <td>{{vuelo.fuelVoucherLtTotal}}</td>
+                                    <td>{{vuelo.errorBitacoraVsVoucher}}</td>
+                                    <td>{{vuelo.consumoLbX1000}}</td>
+                                    <td>{{vuelo.observaciones }}</td>
+
+                                    <td>{{vuelo.fechaLocal}}</td>
+                                    <td>{{vuelo.start}}</td>
+                                    <td>{{vuelo.finish}}</td>
+                                    <td>{{vuelo.concepto }}</td>
+
+                                    <td class="text-nowrap">
+                                        <a href="#" data-toggle="tooltip" data-original-title="Editar"> <i
+                                                class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                        <a href="#" data-toggle="tooltip" data-original-title="Borrar"> <i
+                                                class="fa fa-close text-danger"></i> </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div *ngIf="txtTermino.value.length===0">
+                        <button (click)="cambiarPagina(-10)" class="btn btn-secondary">Anterior</button>
+                        &nbsp;
+                        <button (click)="cambiarPagina(10)" class="btn btn-secondary">Siguiente</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

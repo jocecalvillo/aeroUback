@@ -1,0 +1,77 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input type="text" class="form-control" placeholder="Buscar por estación..." />
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="!cargando">
+
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Precio Seguridad <span class="label label-info">{{totalPrecios}}</span>
+                        </h4>
+                        <h6 class="card-subtitle">Precios registrados en la aplicación</h6>
+
+                    </div>
+
+
+
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Estación</th>
+                                    <th>Importe USD</th>
+                                    <th>Aeropuerto</th>
+                                    <th>Usuario</th>
+
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let price of precioSeguridad">
+
+                                    <td>{{price.est}}</td>
+
+                                    <td>{{price.importeUsd}}</td>
+                                    <td>{{price.aeropuerto}}</td>
+
+                                    <td>{{price.usuario}}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <button class="btn btn-secondary">Anterior</button>
+                    &nbsp;
+                    <button class="btn btn-secondary">Siguiente</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
